@@ -1,4 +1,4 @@
-# Koukouba
+# Koukouba 1.0
 
 A simple bouncing game for Android....
 
