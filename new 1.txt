@@ -1,0 +1,23 @@
+local crate1 = display.newImage( "crate.png" )
+physics.addBody( crate1, { density=3.0, friction=0.5, bounce=0.3 } )
+crate1.myName = "first crate"
+
+local crate2 = display.newImage( "crate.png" )
+physics.addBody( crate2, { density=3.0, friction=0.5, bounce=0.3 } )
+crate2.myName = "second crate"
+
+local function onLocalCollision( self, event )
+
+    if ( event.phase == "began" ) then
+        print( self.myName .. ": collision began with " .. event.other.myName )
+
+    elseif ( event.phase == "ended" ) then
+        print( self.myName .. ": collision ended with " .. event.other.myName )
+    end
+end
+
+crate1.collision = onLocalCollision
+crate1:addEventListener( "collision" )
+
+crate2.collision = onLocalCollision
+crate2:addEventListener( "collision" )
